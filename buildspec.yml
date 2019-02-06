@@ -1,14 +1,15 @@
 version: 0.1
 
 phases:
+  pre_build:
+      - $(aws ecr get-login)
+      - TAG="docker-secret-aws:latest"
   build:
     commands:
-      - docker build -t docker-secret-aws .
+      - docker build -t "${REPOSITORY}:${TAG}  .
   
   post_build:
     commands:
-       - eval $(aws ecr get-login --no-include-email --region us-east-1| sed 's|https://||')
-       - docker tag docker-secret-aws:latest 406674354211.dkr.ecr.us-east-1.amazonaws.com/docker-secret-aws:latest
-       - docker push 406674354211.dkr.ecr.us-east-1.amazonaws.com/docker-secret-aws:latest
-      
+       - docker "${REPOSITORY}:${TAG}"
+       - printf '{"Image":"%s:%s"}' $REPOSITORY $TAG > build.json      
    
