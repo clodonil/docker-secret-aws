@@ -2,14 +2,24 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region us-east-1)
+      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
       - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
-      - docker build --tag "${REPOSITORY}:${TAG}"   .
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build --tag "${REPOSITORY}:latest"   .
+      - docker tag $REPOSITORY:latest $REPOSITORY:$IMAGE_TAG
   
   post_build:
     commands:
-       - docker push "${REPOSITORY}:${TAG}"
-       - printf '{"Image":"%s:%s"}' $REPOSITORY $TAG > build.json      
+       - echo Build completed on `date`
+       - echo Pushing the Docker images...
+       - docker push $REPOSITORY:latest
+       - docker push $REPOSITORY:$IMAGE_TAG
+      - printf '{"Image":"%s:%s"}' $REPOSITORY $TAG > build.json      
    
