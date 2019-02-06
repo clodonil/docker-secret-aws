@@ -1,12 +1,11 @@
-version: 0.1
-
+version: 0.2
 phases:
   pre_build:
       - $(aws ecr get-login)
       - TAG="docker-secret-aws:latest"
   build:
     commands:
-      - docker build -t "${REPOSITORY}:${TAG}"  .
+      - docker build --tag "${REPOSITORY}:${TAG}"  .
   
   post_build:
     commands:
