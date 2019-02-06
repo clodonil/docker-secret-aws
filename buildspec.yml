@@ -1,6 +1,7 @@
 version: 0.2
 phases:
   pre_build:
+    commands:
       - $(aws ecr get-login)
       - TAG="docker-secret-aws:latest"
   build:
