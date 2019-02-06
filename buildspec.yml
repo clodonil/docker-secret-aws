@@ -20,5 +20,10 @@ phases:
        - echo Pushing the Docker images...
        - docker push $REPOSITORY:latest
        - docker push $REPOSITORY:$IMAGE_TAG
-       - printf '{"Image":"%s:%s"}' $REPOSITORY $TAG > build.json      
-   
+       - printf '{"Image":"%s:%s"}' $REPOSITORY:$IMAGE_TAG > build.json   
+artifacts:
+    files:
+       - build.json
+       - cfn/service.yml
+       - cfn/environments/production.json   
+    discard-paths: yes

@@ -1,0 +1,11 @@
+{
+  "Parameters":{
+      "Cluster": "Cluster",
+      "DesiredCount": "2",
+      "Role": "ecsServiceRole",
+      "TargetGroupArn": "",
+      "Image": {
+         "fn::GetParam": ["MyappBuild","build.json","Image"]
+      }
+  }  
+}
