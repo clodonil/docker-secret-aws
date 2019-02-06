@@ -6,10 +6,11 @@ phases:
       - TAG="docker-secret-aws:latest"
   build:
     commands:
-      - docker build --tag "${REPOSITORY}:${TAG}"  .
+      - docker build --tag docker build -t docker-secret-aws   .
   
   post_build:
     commands:
-       - docker "${REPOSITORY}:${TAG}"
+       - docker tag docker-secret-aws:latest 406674354211.dkr.ecr.us-east-1.amazonaws.com/docker-secret-aws:latest
+       - docker push 406674354211.dkr.ecr.us-east-1.amazonaws.com/docker-secret-aws:latest
        - printf '{"Image":"%s:%s"}' $REPOSITORY $TAG > build.json      
    
