@@ -6,7 +6,7 @@ phases:
       - TAG="docker-secret-aws:latest"
   build:
     commands:
-      - docker build --tag docker build -t docker-secret-aws   .
+      - docker build -t docker-secret-aws   .
   
   post_build:
     commands:
