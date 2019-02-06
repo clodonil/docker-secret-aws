@@ -2,7 +2,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - $(aws ecr get-login)
+      - $(aws ecr get-login --no-include-email --region us-east-1)
       - TAG="docker-secret-aws:latest"
   build:
     commands:
