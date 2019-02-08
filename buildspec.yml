@@ -20,7 +20,8 @@ phases:
        - echo Pushing the Docker images...
        - docker push $REPOSITORY:latest
        - docker push $REPOSITORY:$IMAGE_TAG
-       - printf '{"Image":"%s:%s"}' $REPOSITORY:$IMAGE_TAG > build.json   
+       - printf '[{"name":"docker-secret-aws","imageUri":"%s"}]' $REPOSITORY:$IMAGE_TAG > build.json   
+       - cat build.json
 artifacts:
     files:
        - build.json
