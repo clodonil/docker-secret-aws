@@ -1,6 +1,6 @@
 {
   "Parameters":{
-      "Cluster": "Cluster",
+      "Cluster": "Prod",
       "DesiredCount": "2",
       "Role": "ecsServiceRole",
       "TargetGroupArn": "",
