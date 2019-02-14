@@ -2,19 +2,22 @@
 FROM ubuntu:latest
 LABEL maintainer Clodonil Trigo "clodonil@nisled.org"
 RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential wget
-RUN wget https://github.com/Droplr/aws-env/raw/master/bin/aws-env-linux-amd64 -O /bin/aws-env && \
-    chmod +x /bin/aws-env
+RUN apt-get install -y python-pip python-dev build-essential wget git jq
+RUN wget 
 
 ENV PORT='8080'
 ENV DEBUG='True'
 ENV ENVIRONMENT='Development'
 ENV MSG="Hello Word!!!"
-                  
+ENV AWS_ACCESS_KEY_ID
+ENV AWS_SECRET_ACCESS_KEY
+ENV AWS_REGION
 
+                  
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements
-#ENTRYPOINT ["python"]
+ENTRYPOINT ["bash"]
 #CMD ["run.py"]
-CMD ["/bin/bash", "-c", "eval $(aws-env) && python run.py"]
+CMD ["/bin/bash", "-c", "eval $(aws-env.sh) && python run.py"]
+
