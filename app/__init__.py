@@ -9,9 +9,9 @@ def message():
     # alert-danger
     # alert-success 
     alert = { 
-                'Development': 'alert-primary', 
-                'Homolog'    : 'alert-danger', 
-                'Production' : 'alert-success' 
+                'development': 'alert-primary', 
+                'homolog'    : 'alert-danger', 
+                'production' : 'alert-success' 
               } 
 
     message = "{0}  [ environment: {1} ]".format(app.config['MESSAGE'],app.config['ENV'])
