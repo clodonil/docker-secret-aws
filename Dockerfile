@@ -1,4 +1,3 @@
-
 FROM ubuntu:latest
 LABEL maintainer Clodonil Trigo "clodonil@nisled.org"
 RUN apt-get update -y
@@ -12,10 +11,13 @@ ENV AWS_ACCESS_KEY_ID=${KEY}
 ENV AWS_SECRET_ACCESS_KEY=${SECRET}
 ENV AWS_REGION=${REGION}
 
-ENV PORT='8080'
+ENV PORT='80'
 ENV DEBUG='True'
 ENV ENVIRONMENT='development'
 ENV MSG="Hello Word!!!"
+ENV db_url='0.0.0.0'
+ENV db_user='user'
+ENV db_passwd='senha'
 
                   
 COPY . /app
@@ -25,4 +27,3 @@ RUN chmod +x aws-env.sh
 #ENTRYPOINT ["bash"]
 #CMD ["run.py"]
 CMD ["/bin/bash", "-c", "eval $(./aws-env.sh) && python run.py"]
-

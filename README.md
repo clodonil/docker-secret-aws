@@ -5,8 +5,7 @@ Aplicativo em Python (Flask) para validação de variável de ambiente e secret'
 Build da imagem:
 
 ```bash
-$ docker build --build-arg KEY=XXX --build-arg SECRET=XXX -t docker-secret-aws:latest .
-
+$ dockebuild -t docker-secret-aws:latest .
 ```
 
 

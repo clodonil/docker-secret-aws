@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -11,13 +11,45 @@
     <title> Controle de Secrets </title>
   </head>
   <body>
-      <br><br></br><br><br>
+      <br><br>
+      <div class="container">
+        <div class="col-xs-4 col-xs-offset-4">
+           <h1> APP DOCKER SECRET </h1>
+        </div>  
+      </div>
+      <br><br>
+      <div class="container">
+        <div class="col-xs-4 col-xs-offset-4">
+          <div class="alert alert-secondary text-center" role="alert">
+                  Versao: 0.0.2
+          </div>
+      </div>
+
       <div class="container">
           <div class="col-xs-4 col-xs-offset-4">
             <div class="alert {{ env }} text-center" role="alert">
                   {{ message }}
             </div>
       </div>
+
+      <div class="container">
+          <div class="col-xs-4 col-xs-offset-4">
+            <div class="alert {{ env }} text-center" role="alert">
+              <table>
+                 <tr>
+                   <td> DB_URL</td>
+                   <td> DB_USER</td>
+                   <td> DB_PASSWD'</td>
+                 </tr>
+                 <tr>
+                   <td> {{ db_url }}   </td>
+                   <td> {{ db_user }}  </td>
+                   <td> {{ db_passwd }}</td>
+                 </tr>
+              </table>    
+            </div>
+      </div>
+      
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -11,7 +11,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t $REPOSITORY:latest   .
+      - docker build --build-arg KEY=$AWS_KEY --build-arg SECRET=$AWS_SECRET -t $REPOSITORY:latest .
       - docker tag $REPOSITORY:latest $REPOSITORY:$IMAGE_TAG
   
   post_build:
@@ -20,7 +20,7 @@ phases:
        - echo Pushing the Docker images...
        - docker push $REPOSITORY:latest
        - docker push $REPOSITORY:$IMAGE_TAG
-       - printf '[{"name":"AppDemo","imageUri":"%s"}]' $REPOSITORY:$IMAGE_TAG > build.json   
+       - printf '[{"name":"docker-secret","imageUri":"%s"}]' $REPOSITORY:$IMAGE_TAG > build.json   
        - cat build.json
 artifacts:
     files:

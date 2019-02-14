@@ -14,6 +14,8 @@ def message():
                 'production' : 'alert-success' 
               } 
 
-    message = "{0}  [ environment: {1} ]".format(app.config['MESSAGE'],app.config['ENV'])
+    message = "{0}".format(app.config['MESSAGE'])
 
-    return render_template('page.html',message=message, env=alert[app.config['ENV']])
+    return render_template('page.html',message=message, env=alert[app.config['ENV']],db_url=app.config['DB_URL'], db_user=app.config['DB_USER'],db_passwd=app.config['DB_PASSWD'])
+    
+    
