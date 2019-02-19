@@ -1,0 +1,11 @@
+{
+  "Parameters":{
+      "Cluster": "Prod",
+      "DesiredCount": "2",
+      "Role": "ecsServiceRole",
+      "TargetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:325847872862:targetgroup/Docker-Secret/8a7f0a0490a25886",
+      "Image": {
+         "fn::GetParam": ["MyappBuild","build.json","Image"]
+      }
+  }  
+}
