@@ -25,6 +25,4 @@ phases:
 artifacts:
     files:
        - build.json
-       - cfn/service.yml
-       - cfn/environments/homolog.json   
     discard-paths: yes

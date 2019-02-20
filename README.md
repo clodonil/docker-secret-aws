@@ -30,3 +30,33 @@ $ aws ssm put-parameter --name /homolog/MSG --value "Olá Mundo em Homolog" --ty
 Environment Production:
 ```
 $ aws ssm put-parameter --name /prod/MSG --value "Olá Mundo em Production" --type String --key-id "alias/aws/ssm" --region us-west-1```
+
+
+
+
+```
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowPushPull",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::aws_account_id:user/push-pull-user-1",
+          "arn:aws:iam::aws_account_id:user/push-pull-user-2"
+        ]
+      },
+      "Action": [
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:BatchGetImage",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:PutImage",
+        "ecr:InitiateLayerUpload",
+        "ecr:UploadLayerPart",
+        "ecr:CompleteLayerUpload"
+      ]
+    }
+  ]
+}
+```
