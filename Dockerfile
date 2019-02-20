@@ -1,7 +1,7 @@
-FROM ubuntu:latest
+FROM python:3
 LABEL maintainer Clodonil Trigo "clodonil@nisled.org"
 RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential wget git jq
+RUN apt-get install -y jq
 
 ARG KEY
 ARG SECRET
@@ -24,6 +24,4 @@ COPY . /app
 WORKDIR /app
 RUN pip install -r requirements
 RUN chmod +x aws-env.sh
-#ENTRYPOINT ["bash"]
-#CMD ["run.py"]
 CMD ["/bin/bash", "-c", "eval $(./aws-env.sh) && python run.py"]
