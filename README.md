@@ -30,7 +30,7 @@ $ aws ssm put-parameter --name /homolog/MSG --value "Olá Mundo em Homolog" --ty
 Environment Production:
 ```
 $ aws ssm put-parameter --name /prod/MSG --value "Olá Mundo em Production" --type String --key-id "alias/aws/ssm" --region us-west-1```
-
+```
 
 
 
@@ -59,19 +59,20 @@ $ aws ssm put-parameter --name /prod/MSG --value "Olá Mundo em Production" --ty
     }
   ]
 }
+
 ```
 
 ![pipeline-source](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-p1.png)
 
-![pipeline-source](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-step2.png)
+![pipeline-build](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-step2.png)
 
-![pipeline-source](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-deploy.png)
+![pipeline-deploy](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-deploy.png)
 
-![pipeline-source](https://github.com/clodonil/docker-secret-aws/blob/master/img/ecr-repo.png)
+![repo](https://github.com/clodonil/docker-secret-aws/blob/master/img/ecr-repo.png)
 
-![pipeline-source](https://github.com/clodonil/docker-secret-aws/blob/master/img/ecs-create-cluster.png)
+![cluster](https://github.com/clodonil/docker-secret-aws/blob/master/img/ecs-create-cluster.png)
 
-![pipeline-source](https://github.com/clodonil/docker-secret-aws/blob/master/img/cluster-service.png)
+![service](https://github.com/clodonil/docker-secret-aws/blob/master/img/cluster-service.png)
 
 
 
