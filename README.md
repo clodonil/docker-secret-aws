@@ -1,6 +1,28 @@
-# Variável de Ambiente e Secrets na AWS
+# Gestão de Secrets/Enviroment na AWS
 
-Aplicativo em Python (Flask) para validação de variável de ambiente e secret's em containner para AWS.
+Em um processo de gestão de ambientes
+Variável de Ambiente e Secrets na AWS
+
+![12factor](img/12factor.png)
+
+
+## Parameter Store
+
+
+## Secret Manager
+
+
+## laboratório/PoC 
+
+Para o desenvolvimento desse laboratório, usei como base a documentação da AWS ["the right way to store secrets using parameter store"](https://aws.amazon.com/pt/blogs/mt/the-right-way-to-store-secrets-using-parameter-store/) que descreve a melhor forma de aplicar o "Parameter Store" em um container.
+
+Vamos começar o laboratório com aplicação ('Hello Word') que basicamente busca as informações do 'Parameter Store'. O aplicativo foi desenvolvido em Python (Flask) para validação de variável de ambiente e secret's em containner para AWS.
+
+Clone o projeto do [código fonte](https://github.com/clodonil/docker-secret-aws.git) para validar localmente.
+
+```bash
+$ git clone https://github.com/clodonil/docker-secret-aws.git
+```
 
 Build da imagem:
 
@@ -19,48 +41,41 @@ Validando variável de ambiente:
 ```bash
 $ docker run -d -p 8080:8080 -e ENVIRONMENT='Development' -e MSG="Ola Mundo!!!" docker-secret-aws:latest
 ```
+Para validar acesse o navegador para validar:
 
-Criando os parâmetros no SSM.
+![app-local](img/local-app.png)
 
-Environment Homolog:
+Se tudo funcionou perfeitamente até aqui, podemos passar a AWS e colocar a nossa aplicação na AWS.
 
-```
-$ aws ssm put-parameter --name /homolog/MSG --value "Olá Mundo em Homolog" --type String --key-id "alias/aws/ssm" --region us-west-1
-```
-Environment Production:
-```
-$ aws ssm put-parameter --name /prod/MSG --value "Olá Mundo em Production" --type String --key-id "alias/aws/ssm" --region us-west-1```
-```
+### Criando os parâmetros no SSM na AWS.
 
+Vamos começar na AWS preenchendo os dados no Parameter Store.
 
+Pode ser preenchido via painel da AWS..
 
-```
-{
-  "Version": "2008-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowPushPull",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": [
-          "arn:aws:iam::aws_account_id:user/push-pull-user-1",
-          "arn:aws:iam::aws_account_id:user/push-pull-user-2"
-        ]
-      },
-      "Action": [
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:BatchGetImage",
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:PutImage",
-        "ecr:InitiateLayerUpload",
-        "ecr:UploadLayerPart",
-        "ecr:CompleteLayerUpload"
-      ]
-    }
-  ]
-}
+![ssm](img/ssm.png)
+
+Também pode ser preenchido pelo `aws-cli`.
 
 ```
+$ aws ssm put-parameter --name /app/homolog/MSG --value "Olá Mundo em Homolog" --type String --key-id "alias/aws/ssm" --region us-east-1
+```
+
+### Criando o registry ECR
+
+Vamos também criar um repositório no ECR para armazenar as imagens docker. Da mesma forma o repositório pode ser criado via painel ou pelo `aws-cli`.
+
+![repo](https://github.com/clodonil/docker-secret-aws/blob/master/img/ecr-repo.png)
+
+
+### Cluster ECS
+
+
+![cluster](https://github.com/clodonil/docker-secret-aws/blob/master/img/ecs-create-cluster.png)
+
+![service](https://github.com/clodonil/docker-secret-aws/blob/master/img/cluster-service.png)
+
+### Pipeline
 
 ![pipeline-source](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-p1.png)
 
@@ -68,11 +83,6 @@ $ aws ssm put-parameter --name /prod/MSG --value "Olá Mundo em Production" --ty
 
 ![pipeline-deploy](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-deploy.png)
 
-![repo](https://github.com/clodonil/docker-secret-aws/blob/master/img/ecr-repo.png)
-
-![cluster](https://github.com/clodonil/docker-secret-aws/blob/master/img/ecs-create-cluster.png)
-
-![service](https://github.com/clodonil/docker-secret-aws/blob/master/img/cluster-service.png)
 
 
 
