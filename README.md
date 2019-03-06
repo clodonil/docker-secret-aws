@@ -3,7 +3,7 @@
 Em um processo de gestão de ambientes
 Variável de Ambiente e Secrets na AWS
 
-![12factor](img/12factor.png)
+![12factor](https://github.com/clodonil/docker-secret-aws/blob/master/img/12factor.png)
 
 
 ## Parameter Store
@@ -43,7 +43,7 @@ $ docker run -d -p 8080:8080 -e ENVIRONMENT='Development' -e MSG="Ola Mundo!!!" 
 ```
 Para validar acesse o navegador para validar:
 
-![app-local](img/local-app.png)
+![app-local](https://github.com/clodonil/docker-secret-aws/blob/master/img/local-app.png)
 
 Se tudo funcionou perfeitamente até aqui, podemos passar a AWS e colocar a nossa aplicação na AWS.
 
@@ -53,7 +53,7 @@ Vamos começar na AWS preenchendo os dados no Parameter Store.
 
 Pode ser preenchido via painel da AWS..
 
-![ssm](img/ssm.png)
+![ssm](https://github.com/clodonil/docker-secret-aws/blob/master/img/ssm.png)
 
 Também pode ser preenchido pelo `aws-cli`.
 
@@ -70,6 +70,7 @@ Vamos também criar um repositório no ECR para armazenar as imagens docker. Da 
 
 ### Cluster ECS
 
+Vamos também precisar de um Cluster 
 
 ![cluster](https://github.com/clodonil/docker-secret-aws/blob/master/img/ecs-create-cluster.png)
 
@@ -82,10 +83,4 @@ Vamos também criar um repositório no ECR para armazenar as imagens docker. Da 
 ![pipeline-build](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-step2.png)
 
 ![pipeline-deploy](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-deploy.png)
-
-
-
-
-
-
 
