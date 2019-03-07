@@ -23,5 +23,6 @@ ENV db_passwd='senha'
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements
-RUN chmod +x aws-env.sh
-CMD ["/bin/bash", "-c", "eval $(./aws-env.sh) && python run.py"]
+#RUN chmod +x aws-env.sh
+#CMD ["/bin/bash", "-c", "eval $(./aws-env.sh) && python run.py"]
+CMD ["/bin/bash"]
