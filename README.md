@@ -4,7 +4,7 @@ No desenvolvimento de uma aplicação moderna a única coisa que deve mudar entr
 
 A gestão de configurações e um capítulo dos [12facter](https://12factor.net/pt_br/config)
 
-![12factor](https://github.com/clodonil/docker-secret-aws/blob/master/img/img2.png)
+![12factor](https://github.com/clodonil/docker-secret-aws/blob/master/img/img1.png)
 
 Os programas que armazenam acesso a banco de dados ou outros configurações diretamente no seu código, está violando os 12fatores.
 
@@ -16,26 +16,22 @@ No modelo de configuração, precisamos armazenar os dados em um sistema central
  
 Esse sistema que armazena os dados também devem permitir o armazenamento de segredos (secret) e tudo controlado com controle de acesso, log e auditoria.
 
-![dados](https://github.com/clodonil/docker-secret-aws/blob/master/img/img1.png)
+![dados](https://github.com/clodonil/docker-secret-aws/blob/master/img/img2.png)
 
 Na AWS temos 2 serviços que atendem esses critérios e são exclusivamente para armazenamento de dados de configurações. 
 
 São elas:
 
-- AWS Parameter Store
-* [AWS – Documentação]()
-* [AWS - Guia]()
-* [AWS - The Right Way to Store Secrets using Parameter Store]()
+AWS Parameter Store
+ * [AWS – Documentação]()
+ * [AWS - Guia]()
+ * [AWS - The Right Way to Store Secrets using Parameter Store]()
 
-- AWS Secrets Manager
-* [AWS – Documentação]()
-* [AWS - Guia]()
+AWS Secrets Manager
+ * [AWS – Documentação]()
+ * [AWS - Guia]()
 
-
-Fora de scopo:
-Estrutura montada em EC2 (Vault na AWS)
-
-
+É importante reforçar que estamos falando dos serviços AWS, não estou falando de serviços montandos em cima de EC2 (Vault na AWS)
 
 ## Parameter Store
 
