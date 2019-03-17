@@ -123,8 +123,10 @@ Para o desenvolvimento da Pipeline na AWS, vamos primeiramente criar da infraest
 
 A infraestrutura consiste basicamente em criar 2 repositório do ECR para armazenamento das imagens docker.
 
-Além do repositório também é necessário a criação de um Cluster Fargate.
+Além do repositório também é necessário a criação de um Cluster Fargate. Na criação do serviços do Cluster ECS é necessário a definição das variáveis de ambiente (environment) para cada ambiente.
 
 ### Pipeline
+
+A última parte desse documento é demostrar a pipeline que foi desenvolvida para a validação das gestão de configuração.
 
 ![pipeline-source](https://github.com/clodonil/docker-secret-aws/blob/master/img/img9.png)
