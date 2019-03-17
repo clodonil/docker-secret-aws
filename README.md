@@ -20,7 +20,7 @@ Esse sistema que armazena os dados também devem permitir o armazenamento de seg
 
 Na AWS temos 2 serviços que atendem esses critérios e são exclusivamente para armazenamento de dados de configurações. 
 
-São elas:
+São eles:
 
 AWS Parameter Store
  * [AWS – Documentação]()
@@ -35,35 +35,35 @@ AWS Secrets Manager
 
 ## Parameter Store
 
-Gerencie o acesso com políticas detalhadas;
-Gerenciamento escalável de dados de configuração;
-Gerenciamento escalável de segredos;
-Armazena dados em hierarquias e versões de trilha;
-Controla e audita o acesso em níveis específicos.
-Log, Auditoria e Monitoramento;
-Integração com Codebuild, Codedeoploy...
+O Parameter Store (ssm) permite armazenamento de chave/valor estruturado ele contém as seguintes caracteristica:
+
+- Gerencie o acesso com políticas detalhadas;
+- Gerenciamento escalável de dados de configuração;
+- Gerenciamento escalável de segredos;
+- Armazena dados em hierarquias e versões de trilha;
+- Controla e audita o acesso em níveis específicos.
+- Log, Auditoria e Monitoramento;
+- Integração com Codebuild, Codedeoploy...
 
 Definição de preço
 sem custo adicional;
 
-
-
 ## Secret Manager
 
-Gerencie o acesso com políticas detalhadas;
-chaves de criptografia;
-Log, Auditoria e Monitoramento;
-Integração com RDB;
-Politica de rotação e expiração  de segredos;
-Rotação de senhas automaticamente;
-Conformidade  com o HIPAA, PCI e ISO;
+O Secret Manager é mais elaborado que o `Parameter Store`, com integração com os sistemas de RDB permite fazer rotacionamento de senhas e alteração automática das senhas.
+
+- Gerencie o acesso com políticas detalhadas;
+- chaves de criptografia;
+- Log, Auditoria e Monitoramento;
+- Integração com RDB;
+- Politica de rotação e expiração  de segredos;
+- Rotação de senhas automaticamente;
+- Conformidade  com o HIPAA, PCI e ISO;
 
 Definição de preço
 
 0,40 USD por segredo por mês;
 0,05 USD por 10.000 chamadas de API.
-
-
 
 
 ## laboratório/PoC 
@@ -115,19 +115,16 @@ Também pode ser preenchido pelo `aws-cli`.
 $ aws ssm put-parameter --name /app/homolog/MSG --value "Olá Mundo em Homolog" --type String --key-id "alias/aws/ssm" --region us-east-1
 ```
 
-### Criando o registry ECR
+### Infra: registry ECR e Clutser ECS
 
-Vamos também criar um repositório no ECR para armazenar as imagens docker. Da mesma forma o repositório pode ser criado via painel ou pelo `aws-cli`.
+Para o desenvolvimento da Pipeline na AWS, vamos primeiramente criar da infraestrutura.
 
+![infra](https://github.com/clodonil/docker-secret-aws/blob/master/img/img5.png)
 
+A infraestrutura consiste basicamente em criar 2 repositório do ECR para armazenamento das imagens docker.
 
-### Cluster ECS
-
-Vamos também precisar de um Cluster 
-
+Além do repositório também é necessário a criação de um Cluster Fargate.
 
 ### Pipeline
 
 ![pipeline-source](https://github.com/clodonil/docker-secret-aws/blob/master/img/img9.png)
-
-
