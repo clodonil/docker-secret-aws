@@ -3,8 +3,8 @@
 Em um processo de gestão de ambientes
 Variável de Ambiente e Secrets na AWS
 
-![12factor](https://github.com/clodonil/docker-secret-aws/blob/master/img/12factor.png){:style="float: right;margin-right: 7px;margin-top: 7px;:height="50%" width="50%""}
-
+![dados](https://github.com/clodonil/docker-secret-aws/blob/master/img/img1.png)
+![12factor](https://github.com/clodonil/docker-secret-aws/blob/master/img/img2.png)
 
 
 Cloud Pública AWS;
@@ -93,7 +93,7 @@ $ docker run -d -p 8080:8080 -e ENVIRONMENT='Development' -e MSG="Ola Mundo!!!" 
 ```
 Para validar acesse o navegador para validar:
 
-![app-local](https://github.com/clodonil/docker-secret-aws/blob/master/img/local-app.png)
+![app-local](https://github.com/clodonil/docker-secret-aws/blob/master/img/img3.png)
 
 Se tudo funcionou perfeitamente até aqui, podemos passar a AWS e colocar a nossa aplicação na AWS.
 
@@ -103,7 +103,7 @@ Vamos começar na AWS preenchendo os dados no Parameter Store.
 
 Pode ser preenchido via painel da AWS..
 
-![ssm](https://github.com/clodonil/docker-secret-aws/blob/master/img/ssm.png)
+![ssm](https://github.com/clodonil/docker-secret-aws/blob/master/img/img7.png)
 
 Também pode ser preenchido pelo `aws-cli`.
 
@@ -115,22 +115,15 @@ $ aws ssm put-parameter --name /app/homolog/MSG --value "Olá Mundo em Homolog" 
 
 Vamos também criar um repositório no ECR para armazenar as imagens docker. Da mesma forma o repositório pode ser criado via painel ou pelo `aws-cli`.
 
-![repo](https://github.com/clodonil/docker-secret-aws/blob/master/img/ecr-repo.png)
 
 
 ### Cluster ECS
 
 Vamos também precisar de um Cluster 
 
-![cluster](https://github.com/clodonil/docker-secret-aws/blob/master/img/ecs-create-cluster.png)
-
-![service](https://github.com/clodonil/docker-secret-aws/blob/master/img/cluster-service.png)
 
 ### Pipeline
 
-![pipeline-source](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-p1.png)
+![pipeline-source](https://github.com/clodonil/docker-secret-aws/blob/master/img/img9.png)
 
-![pipeline-build](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-step2.png)
-
-![pipeline-deploy](https://github.com/clodonil/docker-secret-aws/blob/master/img/pipeline-deploy.png)
 
