@@ -12,27 +12,24 @@ Apenas as configurações que mudam durante o deploy devem ser gerenciadas, port
 
 A aplicação 12fatores armazena configuração em variáveis de ambiente (env). Env vars são fáceis de mudar entre deploys sem alterar qualquer código; ao contrário de arquivos de configuração, há pouca chance de serem colocados acidentalmente no repositório do código; e ao contrário dos arquivos de configuração personalizados, ou outros mecanismos de configuração, eles são por padrão agnósticos a linguagem e ao SO.
 
-Em um processo de gestão de ambientes
-Variável de Ambiente e Secrets na AWS
-Dados estruturados (prefixo);
-Dados criptografado;
-Controle de acesso;
-Log e Auditoria
+No modelo de configuração, precisamos armazenar os dados em um sistema centralizados, que permita que os dados sejam estruturados, para uma recuperação de dados em uma única chamada.
+ 
+Esse sistema que armazena os dados também devem permitir o armazenamento de segredos (secret) e tudo controlado com controle de acesso, log e auditoria.
 
 ![dados](https://github.com/clodonil/docker-secret-aws/blob/master/img/img1.png)
 
+Na AWS temos 2 serviços que atendem esses critérios e são exclusivamente para armazenamento de dados de configurações. 
 
-Cloud Pública AWS;
-Mesma Imagem (docker) para diferentes ambientes;
+São elas:
 
-AWS Parameter Store
-[AWS – Documentação]()
-[AWS - Guia]()
-[AWS - The Right Way to Store Secrets using Parameter Store]()
+- AWS Parameter Store
+* [AWS – Documentação]()
+* [AWS - Guia]()
+* [AWS - The Right Way to Store Secrets using Parameter Store]()
 
-AWS Secrets Manager
-[AWS – Documentação]()
-[AWS - Guia]()
+- AWS Secrets Manager
+* [AWS – Documentação]()
+* [AWS - Guia]()
 
 
 Fora de scopo:
