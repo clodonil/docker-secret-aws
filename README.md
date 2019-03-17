@@ -3,13 +3,63 @@
 Em um processo de gestão de ambientes
 Variável de Ambiente e Secrets na AWS
 
-![12factor](https://github.com/clodonil/docker-secret-aws/blob/master/img/12factor.png)
+![12factor](https://github.com/clodonil/docker-secret-aws/blob/master/img/12factor.png){:style="float: right;margin-right: 7px;margin-top: 7px;:height="50%" width="50%""}
+
+
+
+Cloud Pública AWS;
+Mesma Imagem (docker) para diferentes ambientes;
+Dados estruturados (prefixo);
+Dados criptografado;
+Controle de acesso;
+Log e Auditoria
+
+AWS Parameter Store
+AWS – Documentação
+AWS - Guia
+AWS - The Right Way to Store Secrets using Parameter Store
+
+AWS Secrets Manager
+AWS – Documentação
+AWS - Guia
+
+
+Fora de scopo:
+Estrutura montada em EC2 (Vault na AWS)
+
 
 
 ## Parameter Store
 
+Gerencie o acesso com políticas detalhadas;
+Gerenciamento escalável de dados de configuração;
+Gerenciamento escalável de segredos;
+Armazena dados em hierarquias e versões de trilha;
+Controla e audita o acesso em níveis específicos.
+Log, Auditoria e Monitoramento;
+Integração com Codebuild, Codedeoploy...
+
+Definição de preço
+sem custo adicional;
+
+
 
 ## Secret Manager
+
+Gerencie o acesso com políticas detalhadas;
+chaves de criptografia;
+Log, Auditoria e Monitoramento;
+Integração com RDB;
+Politica de rotação e expiração  de segredos;
+Rotação de senhas automaticamente;
+Conformidade  com o HIPAA, PCI e ISO;
+
+Definição de preço
+
+0,40 USD por segredo por mês;
+0,05 USD por 10.000 chamadas de API.
+
+
 
 
 ## laboratório/PoC 
