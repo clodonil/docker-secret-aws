@@ -1,27 +1,38 @@
 # Gestão de Secrets/Enviroment na AWS
 
-Em um processo de gestão de ambientes
-Variável de Ambiente e Secrets na AWS
+No desenvolvimento de uma aplicação moderna a única coisa que deve mudar entre os deploys nos ambientes development, homolog e poduction são as configurações.
 
-![dados](https://github.com/clodonil/docker-secret-aws/blob/master/img/img1.png)
+A gestão de configurações e um capítulo dos [12facter](https://12factor.net/pt_br/config)
+
 ![12factor](https://github.com/clodonil/docker-secret-aws/blob/master/img/img2.png)
 
+Os programas que armazenam acesso a banco de dados ou outros configurações diretamente no seu código, está violando os 12fatores.
 
-Cloud Pública AWS;
-Mesma Imagem (docker) para diferentes ambientes;
+Apenas as configurações que mudam durante o deploy devem ser gerenciadas, portanto configurações como `router` ou qualquer outra configuração que não mudam durante o deploy, não devem estar na gestão de configuração.
+
+A aplicação 12fatores armazena configuração em variáveis de ambiente (env). Env vars são fáceis de mudar entre deploys sem alterar qualquer código; ao contrário de arquivos de configuração, há pouca chance de serem colocados acidentalmente no repositório do código; e ao contrário dos arquivos de configuração personalizados, ou outros mecanismos de configuração, eles são por padrão agnósticos a linguagem e ao SO.
+
+Em um processo de gestão de ambientes
+Variável de Ambiente e Secrets na AWS
 Dados estruturados (prefixo);
 Dados criptografado;
 Controle de acesso;
 Log e Auditoria
 
+![dados](https://github.com/clodonil/docker-secret-aws/blob/master/img/img1.png)
+
+
+Cloud Pública AWS;
+Mesma Imagem (docker) para diferentes ambientes;
+
 AWS Parameter Store
-AWS – Documentação
-AWS - Guia
-AWS - The Right Way to Store Secrets using Parameter Store
+[AWS – Documentação]()
+[AWS - Guia]()
+[AWS - The Right Way to Store Secrets using Parameter Store]()
 
 AWS Secrets Manager
-AWS – Documentação
-AWS - Guia
+[AWS – Documentação]()
+[AWS - Guia]()
 
 
 Fora de scopo:
